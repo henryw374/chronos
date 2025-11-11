@@ -5,7 +5,10 @@
  ["src" "test"]
 
  :deps
- {current/deps {:local/root "."}}
+ {current/deps {:local/root "."}
+  com.widdindustries/time-literals-temporal { ;:local/root "../time-literals/tempo"
+                                             :mvn/version "RELEASE"
+                                             }}
 
  :tasks
  {:requires ([clojure.test :as c.test]

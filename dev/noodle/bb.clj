@@ -20,4 +20,7 @@
   (.rangeRefinedBy field nil)
   (.getFrom field nil)
   (.adjustInto field (Instant/now) 1)
+  
+  
+  (let [zdt (c/)])
   )

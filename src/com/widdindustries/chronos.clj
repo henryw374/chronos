@@ -38,7 +38,7 @@
 (defn
  -millisecond
  [f]
- (-> (getFractional f) (Duration/ofNanos) (.toMillisPart)))
+ (-> (getFractional f) (Duration/ofNanos) (.toMillisPart) long))
 
 (defn -microsecond [f] (-> (getFractional f) (/ 1000) long (mod 1000)))
 
@@ -476,7 +476,7 @@
  [arg & args]
  (assert (every? some? (cons arg args)))
  (reduce
-  (fn* [p1__36322# p2__36323#] (greater p1__36322# p2__36323#))
+  (fn* [p1__46806# p2__46807#] (greater p1__46806# p2__46807#))
   arg
   args))
 
@@ -488,7 +488,7 @@
  [arg & args]
  (assert (every? some? (cons arg args)))
  (reduce
-  (fn* [p1__36324# p2__36325#] (lesser p1__36324# p2__36325#))
+  (fn* [p1__46808# p2__46809#] (lesser p1__46808# p2__46809#))
   arg
   args))
 

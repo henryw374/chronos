@@ -3,9 +3,9 @@ generate-all:
 test-cljs:
 			clojure -Adev -X dev/tests-ci-shadow :compile-mode :release
 test-clj:
-			clojure -Adev -X dev/run-clj-tests
+			clojure -Adev:build -X dev/run-clj-tests
 test-bb:
-			bb test
+			/tmp/bb test
 clean:
 			clj -T:build clean
 install:

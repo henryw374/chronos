@@ -1,0 +1,6 @@
+
+
+# 0.9.2 
+
+Chronos works on Babashka versions 1.12.212 and later, apart from the `clock` function.
+

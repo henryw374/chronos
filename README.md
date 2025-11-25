@@ -2,7 +2,7 @@
 
 
 [![Tests build](https://github.com/henryw374/chronos/actions/workflows/tests.yaml/badge.svg)](https://github.com/henryw374/chronos/actions/workflows/tests.yaml)
-<!-- [![bb compatible](https://raw.githubusercontent.com/babashka/babashka/master/logo/badge.svg)](https://babashka.org)-->
+[![bb compatible](https://raw.githubusercontent.com/babashka/babashka/master/logo/badge.svg)](https://babashka.org)
 
 Clojure(Script) API to `java.time` on the JVM and `Temporal` on JS runtimes
 
@@ -14,11 +14,11 @@ Learn Chronos [live in a browser REPL](https://widdindustries.com/chronos-docs/p
 
 java.time and Temporal have some overlap with respect to concepts and naming. [See here for a comparison](https://widdindustries.com/blog/ecma-temporal-vs-java-time.html)
 
-The below graph shows the entities in Temporal. If you know java.time and you squint a bit, it will look familiar to you.
+The graph below shows the entities in 'Temporal'. If you know [java.time](https://docs.oracle.com/javase/8/docs/api/java/time/package-summary.html) already, it should look familiar to you. Clearly there are differences, but there is a lot the same. The Chronos API leverages the common ground between [Temporal](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Temporal) and java.time - sufficient to satisfy the majority of everyday use cases.
 
 ![graph of entities in Temporal](https://tc39.es/proposal-temporal/docs/object-model.svg)
 
-Chronos leverages common ground between java.time and Temporal to create an API is that should cover the vast majority of use cases and should leave users rarely needing to drop to the platform APIs. 
+#### differences between java.time and Temporal
 
 In java.time, there are entities (classes) for 
 
@@ -27,7 +27,7 @@ In java.time, there are entities (classes) for
 * timezone
 * day-of-week
 
-In `Temporal`, these are represented by numbers (or string, in the case of timezone). `Chronos` has chosen to keep the Temporal approach here, so anywhere that these are parameters, they are parsed to the equivalent java.time entities as required.
+In `Temporal`, these are represented by numbers (or string, in the case of timezone). `Chronos` uses the Temporal approach in its API, rather than creating new entities for these types in  JS environments.
 
 Following is some more detail:
 
@@ -61,7 +61,7 @@ Cross-platform date/time APIs for Clojure have already proven popular. It seems 
 both java.time and Temporal.
 
 However, as stated above, although there is not a 1-1 correspondance between java.time and Temporal, there is sufficient
-overlap for a cross platform API that covers the majority of everyday use-cases.
+overlap for a cross-platform API that covers the majority of every day use-cases.
 
 ### Why not 'fill in the gaps' to make Temporal like java.time?
 
@@ -134,6 +134,9 @@ As of October 2025
 </script>
 ```
 
+java 9+ is required to use Chronos on the JVM - although everything except accessing sub-second property fields will work on java 8.
+
+Chronos works on Babashka versions 1.12.212 and later, apart from the `clock` function.
 
 ### Require and use
 

@@ -19,7 +19,7 @@
      (setFractional [_ _])))
 
 #?(:cljay (defn -millisecond [f]
-            (-> (getFractional f) (Duration/ofNanos) (.toMillisPart))))
+            (-> (getFractional f) (Duration/ofNanos) (.toMillisPart) long)))
 #?(:cljay (defn -microsecond [f]
             (-> (getFractional f) (/ 1000) long (mod 1000))))
 #?(:cljay (defn -nanosecond [f]

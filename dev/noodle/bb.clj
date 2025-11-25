@@ -1,6 +1,6 @@
 (ns noodle.bb
-  (:import 
-    (java.time Instant)
+  (:import
+    (java.time Instant Clock ZoneId)
     (java.time.temporal TemporalField ValueRange)))
 
 (def field
@@ -10,9 +10,14 @@
     (getFrom [this temporal]  1)
     (adjustInto [this temporal value] temporal)))
 
+(def clock
+  (proxy [Clock] []
+         (getZone [])
+         (instant [])))
+
 (comment
   ;; exercise the methods of 'field'
   (.rangeRefinedBy field nil)
-  (.getFrom  field nil)
+  (.getFrom field nil)
   (.adjustInto field (Instant/now) 1)
   )

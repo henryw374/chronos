@@ -88,7 +88,7 @@
   (run-clj-tests nil)
   ; start a cljs repl session in the test build. :cljs/quit to exit
   (util/repl :browser-test-build)
-  
+  :cljs/quit
   ; show what npm libs needed by cljs libs
   (util/show-npm-deps)
   

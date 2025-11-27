@@ -232,15 +232,15 @@
                 (c/with 1 c/days-property)
                 (c/with 1 c/months-property)
                 (c/with 1 c/years-property))))))
-  #_(testing "adjusting instant"
-      ; seems pointless and doesnt work in js as-is
-      (let [i (-> (c/instant-deref (c/clock-system-default-zone))
-                  (c/with 123 c/milliseconds-property)
-                  (c/with 456 c/microseconds-property)
-                  (c/with 789 c/nanoseconds-property))]
-        (is (= 123 (c/get-field i c/milliseconds-property)))
-        (is (= 456 (c/get-field i c/microseconds-property)))
-        (is (= 789 (c/get-field i c/nanoseconds-property)))))
+  #?(:clj ; Temporal Instant has no 'with' method
+     (testing "adjusting instant"
+       (let [i (-> (c/instant-deref (c/clock-system-default-zone))
+                   (c/with 123 c/milliseconds-property)
+                   (c/with 456 c/microseconds-property)
+                   (c/with 789 c/nanoseconds-property))]
+         (is (= 123 (c/get-field i c/milliseconds-property)))
+         (is (= 456 (c/get-field i c/microseconds-property)))
+         (is (= 789 (c/get-field i c/nanoseconds-property))))))
   (doseq [[x hour minute second milli micro nano] [[(c/zdt-parse "2024-02-22T00:00:00Z[Europe/London]")
                                                     c/zdt->hour
                                                     c/zdt->minute

@@ -79,6 +79,18 @@ Even when Temporal is widely available, I would imagine many Clojure developers 
 Since `tick` is based on `java.time`, in its entirety it is incompatible with Temporal. Having said that a `chronos.tick`
 namespace exists which contains a subset of the functions from `tick.core` which are compatible - and some commentary about those which are not. This is a WIP.
 
+## Goals 
+
+* make it hard for less experienced users to make mistakes
+  * never use implicit clock or zone
+  * have many non-polymorphic functions e.g. `(c/datetime->year x)` vs single generic `(c/year x)` to help users understand what types they are dealing with
+  * block non-commutative operations by default (see guard-rails section in tutorial)
+  * 
+* restrict the API to core use-cases (e.g. construction, access etc)
+  * e.g. no `range` function with implicit step
+  * most projects have a `date-utils` ns for their specific use-cases, which is the place for that kind of thing
+* In a cljs environment, the library code is amenable to dead code elimination, so only the functions used in the application are included in the final build - and avoid those functions dragging in large things from the core 
+
 ## Usage
 
 ### Depend
